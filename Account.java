@@ -1,10 +1,31 @@
+import java.util.ArrayList;
+
 public class Account {
     private String accountHolder;
-    private int accountNumber;
+    static int accountNumber = 1000;
     private int accountPassword;
     private int bankBalance;
     private int lastWithdrawl;
 
+    ArrayList<Account> accounts = new ArrayList<>();
+
+    void addAccount(Account account){
+        accounts.add(account);
+    }
+
+    Account ifaccountExists(int accountNumber){
+        for(Account acc : accounts){
+            if(acc.getaccountNumber() == accountNumber){
+                return acc;
+            }
+        }
+        return null;
+    }
+
+    int getaccountNumber(){
+        return accountNumber;
+    }
+    
     void getAccountdetails(){
         System.out.println("The name of the account holder is : " + accountHolder);
         System.out.println("Your account number is : " + accountNumber);
@@ -12,9 +33,8 @@ public class Account {
         System.out.println("Your last withdrawl money was Amount : " + lastWithdrawl);
     }
 
-    void setAccoutDetails(String accountHolder, int accountNumber){
+    void setAccoutDetails(String accountHolder){
         this.accountHolder = accountHolder;
-        this.accountNumber = accountNumber;
     }
 
     void setPassword(int accountPassword){

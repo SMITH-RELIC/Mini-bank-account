@@ -5,15 +5,16 @@ public class Main {
         
         Scanner sc = new Scanner(System.in);
         Print statements = new Print();
-        Validator validator = new Validator();
+        Choice choice = new Choice();
 
         statements.introduction();
-        int choice = validator.startValidator();
-        if(choice == 1){
+        int choosed = choice.startValidator();
+        if(choosed == 1){
             statements.existingCustomer();
-            validator.existingCustomer();
+            choice.existingCustomer();
         } else {
             statements.newCustomer();
+            choice.newCustomer();
         }
         
 

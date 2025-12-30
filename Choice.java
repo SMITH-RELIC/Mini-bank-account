@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Validator {
+public class Choice {
     Account acc = new Account();
     Services service = new Services();
     Scanner sc = new Scanner(System.in);
@@ -40,7 +40,7 @@ public class Validator {
     void newCustomer(){
         int choice = sc.nextInt();
         if(choice == 1){
-            //accountCreation();
+            service.create();
         } else if (choice == 2){
             print.printBankDetails();
         } else {
