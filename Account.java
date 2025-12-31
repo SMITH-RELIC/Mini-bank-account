@@ -19,6 +19,8 @@ public class Account {
                 return acc;
             }
         }
+        System.out.println("Your account with account Number : " + accountNumber + " does not exists");
+
         return null;
     }
 
@@ -39,5 +41,9 @@ public class Account {
 
     void setPassword(int accountPassword){
         this.accountPassword = accountPassword;
+    }
+
+    int getAccountPassword(){
+        return accountPassword;
     }
 }

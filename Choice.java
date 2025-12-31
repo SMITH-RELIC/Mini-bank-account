@@ -2,10 +2,17 @@ import java.util.Scanner;
 
 public class Choice {
     Account acc = new Account();
-    Services service = new Services();
     Scanner sc = new Scanner(System.in);
-    Print print = new Print();
+    private Print print;
+    private Services service;
 
+    void setprint(Print print){
+        this.print = print;
+    }
+
+    void setServices(Services service){
+        this.service = service;
+    }
     int startValidator(){
         int choice = sc.nextInt();
         if(choice == 1){
@@ -22,7 +29,10 @@ public class Choice {
     void existingCustomer(){
         int choice = sc.nextInt();
         if(choice == 1){
-            service.update();
+            System.out.println("Enter your account number");
+            byte accountNumber = sc.nextByte();
+            service.update(accountNumber);
+
         } else if (choice == 2) {
             service.delete();
         } else if (choice == 3) {
