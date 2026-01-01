@@ -1,27 +1,22 @@
 
-
 public class Main {
+
     public static void main(String[] args) {
         
 
         Print statements = new Print();
         Choice choice = new Choice();
         Services services = new Services();
+        Account account = new Account();
 
+        services.setAccount(account);
         services.setChoice(choice);
         choice.setServices(services);
+        choice.setprint(statements);
         
         statements.introduction();
-        int choosed = choice.startValidator();
-        if(choosed == 1){
-            statements.existingCustomer();
-            choice.existingCustomer();
-        } else {
-            statements.newCustomer();
-            choice.newCustomer();
-        }
+        choice.mainMenu();
         
-
 
     }
 }

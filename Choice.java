@@ -3,17 +3,33 @@ import java.util.Scanner;
 public class Choice {
     Account acc = new Account();
     Scanner sc = new Scanner(System.in);
-    private Print print;
+    private Print statements;
     private Services service;
+    
 
     void setprint(Print print){
-        this.print = print;
+        this.statements = print;
     }
 
     void setServices(Services service){
         this.service = service;
     }
-    int startValidator(){
+
+    void mainMenu(){
+        System.out.println("Select the corresponding Number for the specific Task");
+        System.out.println("Enter 1 : If you are currently a customer of the bank");
+        System.out.println("Enter 2: If you want to create a New bank account");
+        int choosed = startValidator();
+        if(choosed == 1){
+            statements.existingCustomer();
+            existingCustomer();
+        } else {
+            statements.newCustomer();
+            newCustomer();
+        }
+    }
+    
+    int startValidator(){               
         int choice = sc.nextInt();
         if(choice == 1){
             return 1;
@@ -26,15 +42,18 @@ public class Choice {
         }
     }
 
-    void existingCustomer(){
+    void existingCustomer(){       
+
         int choice = sc.nextInt();
         if(choice == 1){
             System.out.println("Enter your account number");
-            byte accountNumber = sc.nextByte();
+            int accountNumber = sc.nextInt();
             service.update(accountNumber);
 
         } else if (choice == 2) {
-            service.delete();
+            System.out.println("Enter your account number");
+            int accountNumber = sc.nextInt();
+            service.delete(accountNumber);
         } else if (choice == 3) {
             service.disable();
         } else if (choice == 4) {
@@ -52,7 +71,7 @@ public class Choice {
         if(choice == 1){
             service.create();
         } else if (choice == 2){
-            print.printBankDetails();
+            statements.printBankDetails();
         } else {
             System.out.println("Please enter the valid Number");
             newCustomer();

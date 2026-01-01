@@ -2,9 +2,6 @@ public class Print {
     void introduction(){
         System.out.println("Wel-Come to our BANK.");
         System.out.println("What you would like to do : ");
-        System.out.println("Select the corresponding Number for the specific Task");
-        System.out.println("Enter 1 : If you are currently a customer of the bank");
-        System.out.println("Enter 2: If you want to create a New bank account");
     }
 
     void existingCustomer(){

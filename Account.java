@@ -7,12 +7,19 @@ public class Account {
     private int bankBalance;
     private int lastWithdrawl;
 
-    ArrayList<Account> accounts = new ArrayList<>();
+    private ArrayList<Account> accounts = new ArrayList<>();
 
     void addAccount(Account account){
         accounts.add(account);
     }
 
+    int getIndexOfAccount(Account account){
+        return accounts.indexOf(account);
+    }
+
+    void deleteaccount(int index){
+        accounts.remove(index);
+    }
     Account ifaccountExists(int accountNumber){
         for(Account acc : accounts){
             if(acc.getaccountNumber() == accountNumber){

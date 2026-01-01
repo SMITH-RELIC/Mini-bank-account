@@ -3,10 +3,13 @@ import java.util.Scanner;
 public class Services{
 
     Scanner sc = new Scanner(System.in);
-    Account account = new Account();
+    Account account;
     
     private Choice choice;
 
+    void setAccount(Account account){
+        this.account = account;
+    }
     void setChoice(Choice choice){
         this.choice = choice;
     }
@@ -24,9 +27,10 @@ public class Services{
         acc.setAccoutDetails(accountHolder);
         acc.setPassword(accountPassword);
         Account.accountNumber++;
-        acc.addAccount(acc);
+        account.addAccount(acc);
         System.out.println("You're bank account is been created, Successfully");
-        System.out.println("You're account number is " + acc.accountNumber );
+        System.out.println("You're account number is " + account.accountNumber );
+        choice.mainMenu();
     }
 
     int passwordvalidator(){
@@ -45,6 +49,7 @@ public class Services{
     void update(int accountNumber){
         if(account.ifaccountExists(accountNumber) != null){
             Account userAccount = account.ifaccountExists(accountNumber);
+            System.out.println("USER FOUND. Enter the password for authentication");
             int userpassword = sc.nextInt();
             
             if(userAccount.getAccountPassword() == userpassword){
@@ -55,26 +60,60 @@ public class Services{
         } else {
             System.out.println("You're account does not exists with the given Account Number");
             System.out.println();
-            // choice.existingCustomer();
+            choice.mainMenu();
         }
     }
 
     void updater(Account userAccount){
         byte updateWhat = sc.nextByte();
         if(updateWhat == 1){
+            System.out.println("Enter the new Account holder name : ");
             String updateHolderName = sc.next();
             userAccount.setAccoutDetails(updateHolderName);
+            choice.mainMenu();
         } else if(updateWhat == 2){
             int newPassword = passwordvalidator();
             if(newPassword == 0){
-                return;
+                System.out.println("The password updation failed, Please retry again");
             } else{
+                System.out.println("Your password Updation is successful ");
+                System.out.println("Please DO NOT SHARE your new password, that might put your account into DANGER!!!");
+                System.out.println("THANK YOU");
                 userAccount.setPassword(newPassword);
             }
+            choice.mainMenu();
         }
     }
 
-    void delete(){
+    void delete(int accountNumber){
+        if(account.ifaccountExists(accountNumber) != null){
+            Account userAccount = account.ifaccountExists(accountNumber);
+            System.out.println("USER FOUND. Enter the password for authentication");
+            int userpassword = sc.nextInt();
+            
+            if(userAccount.getAccountPassword() == userpassword){
+                accountDeleter(userAccount);
+            }
+        } else {
+            System.out.println("You're account does not exists with the given Account Number");
+            System.out.println();
+            choice.mainMenu();
+        }
+        
+    }
+    
+    void accountDeleter(Account userAccount){
+        System.out.println("Enter 1 : FOR DELETION OF YOUR ACCOUNT");
+        System.out.println("Enter 2 : TO CANCEL THE DELETION OF YOUR ACCOUNT");   
+        byte todelete = sc.nextByte();
+        if(todelete == 1){
+            int accountIndex = account.getIndexOfAccount(userAccount);
+            account.deleteaccount(accountIndex);
+            choice.mainMenu();
+        } else {
+            System.out.println("The process is been cancelled, Your account is remains intacted");
+            choice.mainMenu();
+        }
 
     }
 
