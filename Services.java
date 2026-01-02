@@ -116,6 +116,34 @@ public class Services{
         }
 
     }
+    void deposit(int userAccountNumber){
+       if(account.ifaccountExists(userAccountNumber) != null){
+            Account userAccount = account.ifaccountExists(userAccountNumber);
+            System.out.println("USER FOUND. Enter the password for authentication");
+            int userpassword = sc.nextInt();
+            
+            if(userAccount.getAccountPassword() == userpassword){
+                System.out.println("This account belongs to " + userAccount.getAccountHolder());
+                System.out.println("Enter the ammount you want to deposit in this bank");
+                int ammount = sc.nextInt();
+                System.out.println("Are you sure to deposit AMOUNT " + ammount + " to the " + userAccount.getAccountHolder() + "'s Name");
+                System.out.println("Enter 1 : TO CONFIRM THIS TRANSACTION");
+                byte lastconfirmation = sc.nextByte();
+                if(lastconfirmation == 1){
+                    userAccount.setbankBalance(ammount);
+                    choice.mainMenu();
+                } else {
+                    System.out.println("The transaction is been cancelled, redirecting towards the Main Menu");
+                    choice.mainMenu();
+                }
+                
+            }
+        } else {
+            System.out.println("You're account does not exists with the given Account Number");
+            System.out.println();
+            choice.mainMenu();
+        } 
+    }
 
     void disable(){
 
@@ -125,7 +153,5 @@ public class Services{
 
     }
 
-    void createAccount(){
-
-    }
+        
 }

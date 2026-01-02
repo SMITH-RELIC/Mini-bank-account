@@ -7,7 +7,7 @@ public class Print {
     void existingCustomer(){
         System.out.println("Enter 1: To Update ");
         System.out.println("Enter 2: To delete");
-        System.out.println("Enter 3: To disable");
+        System.out.println("Enter 3: To Deposit money");
         System.out.println("Enter 4: To File a complain");
         System.out.println("Enter 5: To show your account details");
     }

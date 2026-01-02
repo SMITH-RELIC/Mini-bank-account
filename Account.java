@@ -20,6 +20,13 @@ public class Account {
     void deleteaccount(int index){
         accounts.remove(index);
     }
+
+    void setbankBalance(int money){
+        this.bankBalance = money;
+    }
+    String getAccountHolder(){
+        return accountHolder;
+    }
     Account ifaccountExists(int accountNumber){
         for(Account acc : accounts){
             if(acc.getaccountNumber() == accountNumber){

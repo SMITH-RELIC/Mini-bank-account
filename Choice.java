@@ -42,20 +42,21 @@ public class Choice {
         }
     }
 
+    int accountNumber(){
+        System.out.println("Enter your account number");
+            int accountNumber = sc.nextInt();
+            return accountNumber;
+    }
+
     void existingCustomer(){       
 
         int choice = sc.nextInt();
         if(choice == 1){
-            System.out.println("Enter your account number");
-            int accountNumber = sc.nextInt();
-            service.update(accountNumber);
-
+          service.update(accountNumber());
         } else if (choice == 2) {
-            System.out.println("Enter your account number");
-            int accountNumber = sc.nextInt();
-            service.delete(accountNumber);
+            service.delete(accountNumber());
         } else if (choice == 3) {
-            service.disable();
+            service.deposit(accountNumber());
         } else if (choice == 4) {
             service.fileAComplain();
         } else if(choice == 5) {
