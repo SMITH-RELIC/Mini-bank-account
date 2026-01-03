@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Services{
@@ -149,9 +152,27 @@ public class Services{
 
     }
 
-    void fileAComplain(){
+    void fileAComplain() {
+    System.out.println("Please file your complaint, we will look forward to solve it as soon as possible:");
 
+    String complians = sc.nextLine();
+
+    try (PrintWriter writer = new PrintWriter(new FileWriter("Complaint.txt", true))) {
+        writer.println(complians);
+        choice.mainMenu();
+    } catch (IOException e) {
+        System.out.println("Error: " + e.getMessage());
+        System.out.println("The compliant file resulted in failure, Please try again. Or Directly contact us.");
+        choice.mainMenu();
+        return;
     }
+
+    System.out.println("The complaint has been filed successfully.");
+    System.out.println("Sorry for the inconvenience. We look forward to your cooperation.");
+}
+
+
+    
 
         
 }
