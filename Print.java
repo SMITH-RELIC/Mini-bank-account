@@ -8,8 +8,9 @@ public class Print {
         System.out.println("Enter 1: To Update ");
         System.out.println("Enter 2: To delete");
         System.out.println("Enter 3: To Deposit money");
-        System.out.println("Enter 4: To File a complain");
-        System.out.println("Enter 5: To show your account details");
+        System.out.println("Enter 4: To Withdraw money");
+        System.out.println("Enter 5: To File a complain");
+        System.out.println("Enter 6: To show your account details");
     }
 
     void newCustomer(){

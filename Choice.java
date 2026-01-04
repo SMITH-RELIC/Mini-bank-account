@@ -58,8 +58,10 @@ public class Choice {
         } else if (choice == 3) {
             service.deposit(accountNumber());
         } else if (choice == 4) {
+            service.withDrawMoney(accountNumber());
+        } else if (choice == 5) {
             service.fileAComplain();
-        } else if(choice == 5) {
+        } else if(choice == 6) {
             acc.getAccountdetails();
         } else {
             System.out.println("Please enter the valid Number");

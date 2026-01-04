@@ -21,9 +21,17 @@ public class Account {
         accounts.remove(index);
     }
 
-    void setbankBalance(int money){
+    void updatebankBalance(int money){
         this.bankBalance = money;
     }
+    void withdrawlbankBalance(int money){
+        if(money < bankBalance){
+            System.out.println("Transaction is successfull");
+            this.bankBalance -= money;
+        } else {
+            System.out.println("Card declined");
+        }
+     }
     String getAccountHolder(){
         return accountHolder;
     }

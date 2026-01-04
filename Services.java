@@ -133,7 +133,37 @@ public class Services{
                 System.out.println("Enter 1 : TO CONFIRM THIS TRANSACTION");
                 byte lastconfirmation = sc.nextByte();
                 if(lastconfirmation == 1){
-                    userAccount.setbankBalance(ammount);
+                    userAccount.updatebankBalance(ammount);
+                    choice.mainMenu();
+                } else {
+                    System.out.println("The transaction is been cancelled, redirecting towards the Main Menu");
+                    choice.mainMenu();
+                }
+                
+            }
+        } else {
+            System.out.println("You're account does not exists with the given Account Number");
+            System.out.println();
+            choice.mainMenu();
+        } 
+    }
+
+    void withDrawMoney(int userAccountNumber){
+        if(account.ifaccountExists(userAccountNumber) != null){
+            Account userAccount = account.ifaccountExists(userAccountNumber);
+            System.out.println("USER FOUND. Enter the password for authentication");
+            int userpassword = sc.nextInt();
+            
+            if(userAccount.getAccountPassword() == userpassword){
+                System.out.println("This account belongs to " + userAccount.getAccountHolder());
+                System.out.println("Enter the ammount you want to Withdraw from this bank account");
+                int ammount = sc.nextInt();
+                System.out.println("Are you sure to withdraw AMOUNT " + ammount);
+                System.out.println("Enter 1 : TO CONFIRM THIS TRANSACTION");
+                byte lastconfirmation = sc.nextByte();
+                if(lastconfirmation == 1){
+                    userAccount.withdrawlbankBalance(ammount);
+                    System.out.println("The amount "+ ammount + " is been withdrawn");
                     choice.mainMenu();
                 } else {
                     System.out.println("The transaction is been cancelled, redirecting towards the Main Menu");
@@ -153,12 +183,12 @@ public class Services{
     }
 
     void fileAComplain() {
-    System.out.println("Please file your complaint, we will look forward to solve it as soon as possible:");
+    System.out.println("Please file your complaint, we will look forward to solve it as soon as possible: ");
 
-    String complians = sc.nextLine();
+    String compliants = sc.nextLine();
 
     try (PrintWriter writer = new PrintWriter(new FileWriter("Complaint.txt", true))) {
-        writer.println(complians);
+        writer.println(compliants);
         choice.mainMenu();
     } catch (IOException e) {
         System.out.println("Error: " + e.getMessage());
@@ -169,10 +199,5 @@ public class Services{
 
     System.out.println("The complaint has been filed successfully.");
     System.out.println("Sorry for the inconvenience. We look forward to your cooperation.");
-}
-
-
-    
-
-        
+}       
 }
